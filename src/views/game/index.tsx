@@ -41,7 +41,7 @@ const Game: FC = () => {
 
   const verifyWinner = () => {
     const playerOneBoxs = selectedBoxs.filter(box => box.playerId === 1)
-    const playerTwoBoxs = selectedBoxs.filter(box => box.playerId === 1)
+    const playerTwoBoxs = selectedBoxs.filter(box => box.playerId === 2)
     const boxOne = selectedBoxs.filter(box => box.boxId === 1)[0]
     const boxTwo = selectedBoxs.filter(box => box.boxId === 2)[0]
     const boxThree = selectedBoxs.filter(box => box.boxId === 3)[0]
@@ -52,19 +52,17 @@ const Game: FC = () => {
     const boxEight = selectedBoxs.filter(box => box.boxId === 8)[0]
     const boxNine = selectedBoxs.filter(box => box.boxId === 9)[0]
 
-    if (playerOneBoxs.length > 1 || playerTwoBoxs.length > 1) {
-      if (
-        verifyBox(boxOne?.playerId, boxTwo?.playerId, boxThree?.playerId) ||
-        verifyBox(boxOne?.playerId, boxFive?.playerId, boxNine?.playerId) ||
-        verifyBox(boxOne?.playerId, boxFour?.playerId, boxSeven?.playerId) ||
-        verifyBox(boxTwo?.playerId, boxFive?.playerId, boxEight?.playerId) ||
-        verifyBox(boxThree?.playerId, boxSix?.playerId, boxNine?.playerId) ||
-        verifyBox(boxThree?.playerId, boxFive?.playerId, boxSeven?.playerId) ||
-        verifyBox(boxFour?.playerId, boxFive?.playerId, boxSix?.playerId) ||
-        verifyBox(boxSeven?.playerId, boxEight?.playerId, boxNine?.playerId)
-      )
-        setWinner(isPlayerOne ? 2 : 1)
-    }
+    if (
+      verifyBox(boxOne?.playerId, boxTwo?.playerId, boxThree?.playerId) ||
+      verifyBox(boxOne?.playerId, boxFive?.playerId, boxNine?.playerId) ||
+      verifyBox(boxOne?.playerId, boxFour?.playerId, boxSeven?.playerId) ||
+      verifyBox(boxTwo?.playerId, boxFive?.playerId, boxEight?.playerId) ||
+      verifyBox(boxThree?.playerId, boxSix?.playerId, boxNine?.playerId) ||
+      verifyBox(boxThree?.playerId, boxFive?.playerId, boxSeven?.playerId) ||
+      verifyBox(boxFour?.playerId, boxFive?.playerId, boxSix?.playerId) ||
+      verifyBox(boxSeven?.playerId, boxEight?.playerId, boxNine?.playerId)
+    )
+      setWinner(isPlayerOne ? 2 : 1)
   }
 
   const handleClick = (boxId: number) => {
